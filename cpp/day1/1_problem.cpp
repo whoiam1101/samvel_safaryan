@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     
     // Declare keep number
-    int keep_number = 0;
+    int keep_number;
 
     // Read keep_number while it isn't in [1, 100]
     do {
@@ -26,7 +26,7 @@ int main() {
     system("clear");
 
     // Declare say_number
-    int say_number = 0;
+    int say_number;
 
     // Read say_number while it doesn't equal to keep_number
     do {
