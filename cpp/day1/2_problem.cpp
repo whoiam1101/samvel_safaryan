@@ -10,7 +10,7 @@ int main() {
     // Read number while number doesn't belong [0, 10]
     do {
         
-        cout << "Please enter the number from 1 to 10\n";
+        cout << "Please enter the number from 0 to 10\n";
         cout << "$ ";
 
         // Read number
