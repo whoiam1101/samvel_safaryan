@@ -1,9 +1,19 @@
 #include <iostream>
-#include <cctype>
 
 using namespace std;
 
 // Vowel letters is A, E, I, O, U, and sometimes Y.
+
+
+// Implementation function: return true if symbol is alphabetical letter
+// Otherwise return false
+bool isalpha(char symbol) {
+    if (('a' <= symbol && symbol <= 'z') || ('A' <= symbol && symbol <= 'Z')) {
+        return true;
+    }
+
+    return false;
+}
 
 int main() {
 
