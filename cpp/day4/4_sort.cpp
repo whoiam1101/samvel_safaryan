@@ -30,7 +30,7 @@ int main() {
 
     for (int i = 0; i < SIZE; i++) {
         // Get random number
-        a[i] = my_random_generator(-10000000, 10000000);
+        a[i] = my_random_generator(-1000, 1000);
         
         // Print a[i]
         cout << a[i] << " ";
@@ -65,6 +65,9 @@ int main() {
 // Change my old  random generator for return random double number
 // return random number in range [left, right]
 double my_random_generator(int left, int right) {
+    left *= left * left;
+    right *= right * right;
+
     int random_number = my_generator() % (right - left + 1) + left;
 
     return cbrt((double) random_number);
