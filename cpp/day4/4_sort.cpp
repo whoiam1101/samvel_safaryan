@@ -65,11 +65,7 @@ int main() {
 // Change my old  random generator for return random double number
 // return random number in range [left, right]
 double my_random_generator(int left, int right) {
-    if (right == left) {
-        return (double) left;
-    }
-
-    int random_number = my_generator() % (right - left) + left;
+    int random_number = my_generator() % (right - left + 1) + left;
 
     return cbrt((double) random_number);
 }
