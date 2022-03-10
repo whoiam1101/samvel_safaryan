@@ -52,9 +52,5 @@ int main() {
 // Define my random generator
 // return random number in range [left, right]
 int my_random_generator(int left, int right) {
-    if (right == left) {
-        return left;
-    }
-
-    return my_generator() % (right - left) + left;
+    return my_generator() % (right - left + 1) + left;
 }
