@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ using namespace std;
 mt19937 my_generator(time(nullptr));
 
 // Declare my random generator
-int my_random_generator(int, int);
+double my_random_generator(int, int);
 
 int main() {
     // Declare number
@@ -22,13 +23,13 @@ int main() {
     // Array size = <number>
     // Declare int array
     const int SIZE = number;
-    int a[SIZE];
+    double a[SIZE];
 
     cout << "Array: ";
 
     for (int i = 0; i < SIZE; i++) {
         // Get random number in range [-1000000, 1000000]
-        a[i] = my_random_generator(-1000000, 1000000);
+        a[i] = my_random_generator(-1000, 1000);
         
         // Print a[i]
         cout << a[i] << " ";
@@ -41,7 +42,7 @@ int main() {
         
         if (i < SIZE / 2) {
             // Swap a[i] and a[SIZE - i - 1]
-            int tmp = a[i];
+            double tmp = a[i];
             a[i] = a[SIZE - i - 1];
             a[SIZE - i - 1] = tmp;
         }
@@ -56,10 +57,13 @@ int main() {
 
 // Define my random generator
 // return random number in range [left, right]
-int my_random_generator(int left, int right) {
-    if (right == left) {
-        return left;
-    }
+double my_random_generator(int left, int right) {
+    left  *= left  * left;
+    right *= right * right;
 
-    return my_generator() % (right - left) + left;
+    int rnd_number = my_generator() % (right - left + 1) + left;
+    
+    return cbrt((double) rnd_number);
 }
+
+
