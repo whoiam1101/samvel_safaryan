@@ -23,7 +23,7 @@ int main() {
     const int WIDTH  = n;
 
     // Declare matrix m x n
-    double matrix[HEIGHT][WIDTH + 2];
+    double matrix[HEIGHT][WIDTH];
 
     cout << "Matrix(" << m << "x" << n << ")\n";
 
