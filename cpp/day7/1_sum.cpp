@@ -2,11 +2,11 @@
 
 using namespace std;
 
-void sum1(int *a, int *b, int *sum);
-void sum2(int &a, int &b, int &sum);
-void sum3(int  a, int  b, int &sum);
-void sum4(int  a, int *b, int &sum);
-void sum5(int *a, int *b, int &sum);
+void sum1(int *, int *, int *);
+void sum2(int &, int &, int &);
+void sum3(int  , int  , int &);
+void sum4(int  , int *, int &);
+void sum5(int *, int *, int &);
 
 void _beautifullPrint(string, int, int, int);
 
