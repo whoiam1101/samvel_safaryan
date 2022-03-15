@@ -2,6 +2,7 @@
 
 #include "my_atoi.h"
 
+// Define my_atoi function
 int my_atoi(char* arr) {
     // start pos = 1 if number is negative
     // start pos = 0 if number is positive
