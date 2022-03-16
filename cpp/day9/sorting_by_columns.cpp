@@ -43,7 +43,7 @@ int main() {
 
                 if (a > b) {
                     *(*fpptr + (ptr - *MA)) = b;
-                    *(*spptr + (ptr - *MA))  = a;
+                    *(*spptr + (ptr - *MA)) = a;
                 }
             }
         }
