@@ -16,13 +16,13 @@ int main(int argc, char* argv[]) {
     cout << fixed;
     cout << setprecision(2);
 
-    const int SECONDS_PER_DAY = 24 * 60 * 60 * 30;
+    const int SECONDS_PER_MONTH = 24 * 60 * 60 * 30;
 
     for (int i = 1; i <= count_of_month; i++) {
         float delta = deposit * percentage;
         float current_deposit = delta + deposit;
 
-        time_t t = time(0) + SECONDS_PER_DAY * i;
+        time_t t = time(0) + SECONDS_PER_MONTH * i;
         char* time = ctime(&t);
 
         cout << "Date: " << time
