@@ -66,7 +66,7 @@ int main() {
                         }
                     }
 
-                    if (incorrect_count == 1) {
+                    if (incorrect_count <= 1) {
                         for (int i = 0; i < (int) temp.size(); i++) {
                             if ('a' <= word[i] && word[i] <= 'z') {
                                 fout << _lowerCase(temp[i]);
