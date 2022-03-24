@@ -1,0 +1,8 @@
+hello -> բարև
+good -> լավ
+programming -> ծրագրավորում
+like -> սիրել
+yes -> այո
+no -> ոչ
+you -> դու
+I -> ես
