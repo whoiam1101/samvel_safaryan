@@ -102,10 +102,8 @@ int main(int argc, char* argv[]) {
     if (strcmp(argv[1], "search") == 0) {
         string search_mode;
 
-        //do {
-            cout << "Input search mode (countryName / capital / domain) : ";
-            cin >> search_mode;
-        //} while (search_mode != "countryName" || search_mode != "capital" || search_mode != "domain");
+        cout << "Input search mode (countryName / capital / domain) : ";
+        cin >> search_mode;
 
         if (search_mode == "countryName") {
             string name;
@@ -141,7 +139,7 @@ int main(int argc, char* argv[]) {
             if (!is_find) {
                 cout << "Could not find country, whos capital is " << capital << endl;
             }
-        } else {
+        } else if (search_mode == "domain") {
             string domain;
             cout << "Input domain : ";
             cin >> domain;
@@ -161,6 +159,9 @@ int main(int argc, char* argv[]) {
             if (!is_find) {
                 cout << "Could not find country, whos domain is " << domain << endl;
             }
+        } else {
+            cout << "You have inputed not domain or countryName or capital, good bye!" << endl;
+            return 0;
         }
     } else {
         Country first_country;
