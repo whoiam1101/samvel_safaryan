@@ -1,0 +1,5 @@
+BMW, 1000, 2000, 200000, 2, automatic,
+Audi, 1000, 2000, 200000, 2, automatic,
+Toyota, 2000, 3000, 1000, 3, mechanic,
+Mersedes Benz, 100, 200, 100, 4, automatic,
+Buggati, 3000000, 18000000, 0, 10, mechanic,
