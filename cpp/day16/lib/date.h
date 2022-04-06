@@ -12,22 +12,6 @@ struct Date {
     unsigned int mm;
     unsigned int yyyy;
 
-    Date() {
-        dd   = 0U;
-        mm   = 0U;
-        yyyy = 0U;
-    }
-
-    Date(
-        unsigned int _dd,
-        unsigned int _mm,
-        unsigned int _yyyy
-    ) {
-        dd   = _dd;
-        mm   = _mm;
-        yyyy = _yyyy;
-    }
-
     void setDate(string date) {
         dd   = (unsigned int) atoi(_subString(date, 0, 1).c_str());
         mm   = (unsigned int) atoi(_subString(date, 3, 4).c_str());

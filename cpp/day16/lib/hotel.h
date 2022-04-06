@@ -3,51 +3,51 @@
 
 #include <iostream>
 #include <cassert>
+#include <fstream>
 
 #include "substring.h"
 
 using namespace std;
 
 struct Hotel {
-    string hotelName;
-    string countryName;
-    string address;
+    unsigned int hotel_id;
 
-    unsigned int stars;
-    unsigned int countOfRooms;
+    string hotel_name;
+    string country_name;
+    string city_name;
 
-    Hotel() {
-        hotelName   = "";
-        countryName = "";
-        address     = "";
+    unsigned int count_of_flats;
 
-        stars        = 0;
-        countOfRooms = 0;
+    void write() const {
+        ofstream fout("hotels.txt", ios::app);
+        fout << hotel_id << ", "
+            << hotel_name << ", "
+            << country_name << ", "
+            << city_name << ", "
+            << count_of_flats << endl;
+        fout.close();
     }
 
-    Hotel(
-        string _hotelName,
-        string _countryName,
-        string _address,
-        unsigned int _stars
-    ) {
-        hotelName   = _hotelName;
-        countryName = _countryName;
-        address     = _address;
+    bool isExist() {
+        ifstream fin("hotels.txt");
+        string information;
+        while (getline(fin, information)) {
+            int pos = 0;
+            unsigned int ignore = (unsigned int) atoi(_subLine(information, pos).c_str());
 
-        stars        = _stars;
-        countOfRooms = _roomsCount(hotelName);
-    }
-
-    void setInformation(string information) {
-        int pos = 0;
-        while (information[pos] != '\0') {
-            hotelName   = _subLine(information, pos);
-            countryName = _subLine(information, pos);
-            address     = _subLine(information, pos);
-
-            stars = (unsigned int) atoi(_subLine(information, pos).c_str());
+            if (
+                _isEqual(_subLine(information, pos), hotel_name) &&
+                _isEqual(_subLine(information, pos), country_name) &&
+                _isEqual(_subLine(information, pos), city_name)
+            ) {
+                fin.close();
+                return true;
+            }
         }
+
+        fin.close();
+
+        return false;
     }
 };
 
