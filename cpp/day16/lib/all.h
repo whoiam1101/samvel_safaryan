@@ -5,6 +5,7 @@
 
 #include "hotel.h"
 #include "inhotel.h"
+#include "hotelinfo.h"
 
 #include "substring.h"
 

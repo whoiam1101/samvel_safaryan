@@ -19,16 +19,18 @@ int main() {
             break;
         } else if (_isEqual(command, "add")) {
             Hotel new_hotel;
-            InHotel in_new_hotel;
 
             cout << " Enter hotel name -> ";
-            getline(cin, new_hotel.hotel_name);
+            cin >> new_hotel.hotel_name;
 
             cout << " Enter country name -> ";
-            getline(cin, new_hotel.country_name);
+            cin >> new_hotel.country_name;
 
             cout << " Enter city name -> ";
-            getline(cin, new_hotel.city_name);
+            cin >> new_hotel.city_name;
+
+            cout << " Enter count of flats -> ";
+            cin >> new_hotel.count_of_flats;
 
             if (new_hotel.isExist()) {
                 cout << new_hotel.hotel_name << " is exist!\n";
@@ -41,11 +43,24 @@ int main() {
 
             new_hotel.hotel_id++;
 
-            ofstream whotels_count("hotel_count.txt");
+            ofstream whotels_count("hotels_count.txt");
             whotels_count << new_hotel.hotel_id << endl;
             whotels_count.close();
 
             new_hotel.write();
+
+            InHotel* inhotel = new InHotel[new_hotel.count_of_flats];
+            for (unsigned int i = 1; i <= new_hotel.count_of_flats; i++) {
+                inhotel[i - 1].hotel_id = new_hotel.hotel_id;
+                inhotel[i - 1].room_id  = i;
+                cout << " Enter the price of flat " << i << endl;
+                cin >> inhotel[i - 1].price;
+                cout << " Enter the count of rooms in flat " << i << endl;
+                cin >> inhotel[i - 1].count_of_rooms;
+                inhotel[i - 1].is_occupied = false;
+
+                inhotel[i - 1].write();
+            }
 
         } else {
             cout << "'" << command << "' not support!\n";

@@ -1,1 +1,1 @@
-hotelName, stars, countryName, address
+1, MyHotel, Armenia, Yerevan, 5

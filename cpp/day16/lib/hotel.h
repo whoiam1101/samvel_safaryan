@@ -40,6 +40,8 @@ struct Hotel {
                 _isEqual(_subLine(information, pos), country_name) &&
                 _isEqual(_subLine(information, pos), city_name)
             ) {
+                hotel_id = ignore;
+                count_of_flats = (unsigned int) atoi(_subLine(information, pos).c_str());
                 fin.close();
                 return true;
             }
