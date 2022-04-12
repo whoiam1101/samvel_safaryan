@@ -21,7 +21,6 @@ namespace HumanEnums {
         NEGROES,
         MONGOLOID,
         AUSTRALOID,
-        RACE
     };
 }
 
@@ -60,19 +59,16 @@ namespace Programming {
     namespace ProgrammingLanguageParadigm {
         namespace DeclarativeProgrammingLanguages {
             enum Logic {
-                NONE,
                 PROLOG
             };
 
             enum Functional {
-                NONE,
                 LISP,
                 APL,
                 SCHEME
             };
 
             enum Database {
-                NONE,
                 MONGODB,
                 SQL
             };
@@ -80,7 +76,6 @@ namespace Programming {
 
         namespace ImperativeProgrammingLanguages {
             enum Procedural {
-                NONE,
                 C,
                 PASCAL,
                 FORTRAN,
@@ -88,7 +83,6 @@ namespace Programming {
             };
 
             enum ObjOriented {
-                NONE,
                 ADA,
                 OBJECTPASCAL,
                 CPLUSPLUS,
@@ -100,7 +94,6 @@ namespace Programming {
             };
 
             enum ParallelProcessing {
-                NONE,
                 ADA,
                 PASCALS,
                 OCCAM,
@@ -110,7 +103,6 @@ namespace Programming {
     }
 
     enum Ide {
-        NONE,
         CLION,
         NETBEANS,
         ECLIPSE,
@@ -120,7 +112,6 @@ namespace Programming {
 
     namespace TextEditors {
         enum ConsoleTextEditor {
-            NONE,
             VIM,
             EMACS,
             NANO,
@@ -128,7 +119,6 @@ namespace Programming {
         };
 
         enum GuiTextEditor {
-            NONE,
             VISUALCODE,
             SUBLIMETEXT,
             ATOM,
