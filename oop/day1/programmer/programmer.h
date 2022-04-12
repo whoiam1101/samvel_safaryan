@@ -23,15 +23,15 @@ public:
     }
 
     Programmer(
-        ProgrammerType _new_type,
-        ProgrammerLevel _new_level,
-        Company _new_company,
-        unsigned int _new_salary
+        ProgrammerType type,
+        ProgrammerLevel level,
+        Company company,
+        unsigned int salary
     ) {
-        _type    = _new_type;
-        _level   = _new_level;
-        _company = _new_company;
-        _salary  = _new_salary;
+        _type    = type;
+        _level   = level;
+        _company = company;
+        _salary  = salary;
     }
 
     void setProgrammerType(ProgrammerType);
@@ -40,9 +40,9 @@ public:
     bool setProgrammerLevel(ProgrammerLevel);
     bool setWorkPlace(Company);
 
-    char* getProgrammerType()  const;
-    char* getProgrammerLevel() const;
-    char* getWorkPlace()       const;
+    const char* getProgrammerType()  const;
+    const char* getProgrammerLevel() const;
+    const char* getWorkPlace()       const;
 
     unsigned int getSalary() const;
 };

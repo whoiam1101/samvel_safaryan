@@ -1,65 +1,63 @@
 #include "programmer.h"
 
-void Programmer::setProgrammerType(ProgrammerType _new_type) {
-    _type = _new_type;
+const char* company[] = {
+    "MICROSOFT",
+    "ALPHABET",
+    "APPLE",
+    "SAMSUNG",
+    "ORACLE"
+};
+
+const char* programmer_level[] = {
+    "LEARNER",
+    "JUNIOR",
+    "MIDDLE",
+    "SENIOR",
+    "LEAD"
+};
+
+const char* programmer_type[] = {
+    "FRONTEND DEVELOPER",
+    "BACKEND DEVELOPER",
+    "FULLSTACK DEVELOPER",
+    "DEVOPS ENGINNER",
+    "DATA SCIENTIST",
+    "AI DEVELOPER"
+};
+
+void Programmer::setProgrammerType(ProgrammerType type) {
+    _type = type;
 }
 
-bool Programmer::setProgrammerLevel(ProgrammerLevel _new_level) {
-    if (_new_level <= _level) {
-        return false;
+bool Programmer::setProgrammerLevel(ProgrammerLevel level) {
+    if (level > _level) {
+        _level = level;
+        return true;
     }
-
-    _level = _new_level;
-    return true;
+    return false;
 }
 
-bool Programmer::setWorkPlace(Company _new_company) {
-    if (_new_company == _company) {
-        return false;
+bool Programmer::setWorkPlace(Company company) {
+    if (company != _company) {
+        _company = company;
+        return true;
     }
-
-    _company = _new_company;
-    return true;
+    return false;
 }
 
-void Programmer::setSalary(unsigned int _new_salary) {
-    _salary = _new_salary;
+void Programmer::setSalary(unsigned int salary) {
+    _salary = salary;
 }
 
-char* Programmer::getProgrammerType() const {
-    char* programmer_type[] = {
-        "FRONTEND DEVELOPER",
-        "BACKEND DEVELOPER",
-        "FULLSTACK DEVELOPER",
-        "DEVOPS ENGINNER",
-        "DATA SCIENTIST",
-        "AI DEVELOPER"
-    };
-
+const char* Programmer::getProgrammerType() const {
     return programmer_type[_type];
 }
 
-char* Programmer::getProgrammerLevel() const {
-    char* programmer_level[] = {
-        "LEARNER",
-        "JUNIOR",
-        "MIDDLE",
-        "SENIOR",
-        "LEAD"
-    };
-
+const char* Programmer::getProgrammerLevel() const {
     return programmer_level[_level];
 }
 
-char* Programmer::getWorkPlace() const {
-    char* company[] = {
-        "MICROSOFT",
-        "ALPHABET",
-        "APPLE",
-        "SAMSUNG",
-        "ORACLE"
-    };
-
+const char* Programmer::getWorkPlace() const {
     return company[_company];
 }
 
