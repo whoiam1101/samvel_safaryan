@@ -13,12 +13,12 @@ void Human::walk() {
     _physical_health_level++;
 }
 
-void Human::digestion(Food _food) {
+void Human::digestion(Food food) {
     _physical_health_level++;
 }
 
-void Human::digestion(Drink _drink) {
-    switch (_drink) {
+void Human::digestion(Drink drink) {
+    switch (drink) {
         case Drink::WATER:
         case Drink::MILK:
         case Drink::TEA:
@@ -38,14 +38,14 @@ void Human::digestion(Drink _drink) {
     }
 }
 
-void Human::drink(Drink _drink) {
-    digestion(_drink);
+void Human::drink(Drink drink) {
+    digestion(drink);
 }
 
-void Human::eat(Food _food) {
-    digestion(_food);
+void Human::eat(Food food) {
+    digestion(food);
 }
 
-void Human::colorHair(Color _color) {
-    _hair_color = _color;
+void Human::setHairColor(Color color) {
+    _hair_color = color;
 }

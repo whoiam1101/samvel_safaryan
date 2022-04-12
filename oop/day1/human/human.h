@@ -12,8 +12,8 @@ class Human {
 private:
     Gender _gender;
 
-    unsigned int _eye_color;
-    unsigned int _hair_color;
+    Color _eye_color;
+    Color _hair_color;
 
     Human* _mother;
     Human* _father;
@@ -32,19 +32,19 @@ public:
     }
 
     Human(
-        Gender _human_gender,
-        unsigned int _human_physical_health_level,
-        unsigned int _human_mental_health_level,
-        Human* _human_mother,
-        Human* _human_father
+        Gender gender,
+        unsigned int physical_health_level,
+        unsigned int mental_health_level,
+        Human* mother,
+        Human* father
     ) {
-        _gender = _human_gender;
+        _gender = gender;
 
-        _physical_health_level = _human_physical_health_level;
-        _mental_health_level   = _human_mental_health_level;
+        _physical_health_level = physical_health_level;
+        _mental_health_level   = mental_health_level;
 
-        _mother = _human_mother;
-        _father = _human_father;
+        _mother = mother;
+        _father = father;
     }
 
     char* speak(char*) const;
@@ -55,7 +55,8 @@ public:
     void digestion(Drink);
     void drink(Drink);
     void eat(Food);
-    void colorHair(Color);
+
+    void setHairColor(Color);
 };
 
 #endif
