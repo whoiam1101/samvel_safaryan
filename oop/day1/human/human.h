@@ -22,8 +22,8 @@ private:
     unsigned int _mental_health_level;
 
 protected:
-    virtual void work();
-    virtual void dance();
+    virtual void work()  = 0;
+    virtual void dance() = 0;
 
 public:
     Human() {
