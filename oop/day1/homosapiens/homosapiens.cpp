@@ -24,10 +24,10 @@ Race HomoSapiens::getRace() const {
     return _race;
 }
 
-void HomoSapiens::setReligion(Religion _new_religion) {
-    _religion = _new_religion;
+void HomoSapiens::setReligion(Religion religion) {
+    _religion = religion;
 }
 
-void HomoSapiens::setAddress(char* _new_address) {
-    _address = _new_address;
+void HomoSapiens::setAddress(char* address) {
+    _address = address;
 }
