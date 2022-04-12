@@ -17,6 +17,23 @@ private:
     unsigned int _salary;
 
 public:
+    Programmer() {
+        _level = ProgrammerLevel::LEARNER;
+        _salary = 0U;
+    }
+
+    Programmer(
+        ProgrammerType _new_type,
+        ProgrammerLevel _new_level,
+        Company _new_company,
+        unsigned int _new_salary
+    ) {
+        _type    = _new_type;
+        _level   = _new_level;
+        _company = _new_company;
+        _salary  = _new_salary;
+    }
+
     void setProgrammerType(ProgrammerType);
     void setSalary(unsigned int);
 
