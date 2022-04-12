@@ -26,6 +26,27 @@ protected:
     virtual void dance();
 
 public:
+    Human() {
+        _physical_health_level = 100;
+        _mental_health_level   = 100;
+    }
+
+    Human(
+        Gender _human_gender,
+        unsigned int _human_physical_health_level,
+        unsigned int _human_mental_health_level,
+        Human* _human_mother,
+        Human* _human_father
+    ) {
+        _gender = _human_gender;
+
+        _physical_health_level = _human_physical_health_level;
+        _mental_health_level   = _human_mental_health_level;
+
+        _mother = _human_mother;
+        _father = _human_father;
+    }
+
     char* speak(char*) const;
 
     void think();
