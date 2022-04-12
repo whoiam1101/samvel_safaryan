@@ -16,6 +16,27 @@ private:
     Race _race;
 
 public:
+    HomoSapiens() {
+        _address   = "";
+        _full_name = "";
+
+        _religion = Religion::CHRISTIANITY;
+        _race = Race::AUSTRALOID;
+    }
+
+    HomoSapiens(
+        char* _new_address,
+        char* _new_full_name,
+        Religion _new_religion,
+        Race _new_race
+    ) {
+        _address   = _new_address;
+        _full_name = _new_full_name;
+
+        _religion = _new_religion;
+        _race = _new_race;
+    }
+
     void work() override;
     void dance() override;
 
