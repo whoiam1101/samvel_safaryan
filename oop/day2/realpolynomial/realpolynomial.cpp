@@ -29,7 +29,7 @@ void RealPolynomial::setDegree(unsigned int degree) {
 
 void RealPolynomial::setCoefficients() {
     _coefficient = new double[this->getDegree() + 1];
-    for (unsigned int index = this->getDegree(); index >= 0U; index--) {
+    for (int index = (int) this->getDegree(); index >= 0; index--) {
         this->setCoefficientByIndex(index, 0.0);
     }
 }
@@ -68,7 +68,7 @@ double RealPolynomial::getCoefficientByIndex(unsigned int index) const {
 
 double RealPolynomial::getValueAtPoint(double x) const {
     double result = this->getCoefficientByIndex(this->getDegree());
-    for (unsigned int index = this->getDegree() - 1; index >= 0U; index--) {
+    for (int index = (int) this->getDegree() - 1; index >= 0U; index--) {
         result = x * result + this->getCoefficientByIndex(index);
     }
     return result;
