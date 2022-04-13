@@ -50,9 +50,9 @@ double RealPolynomial::getCoefficientByIndex(unsigned int index) const {
 }
 
 double RealPolynomial::getValueAtPoint(double x) const {
-    double result = 1.0;
-    for (unsigned int index = getDegree(); index >= 1U; index--) {
-        result = getCoefficientByIndex(index) * result + getCoefficientByIndex(index - 1U);
+    double result = getCoefficientByIndex(getDegree());
+    for (unsigned int index = getDegree() - 1; index >= 0U; index--) {
+        result = x * result + getCoefficientByIndex(index);
     }
     return result;
 }
