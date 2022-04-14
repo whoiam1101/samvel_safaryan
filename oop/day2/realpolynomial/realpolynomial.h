@@ -3,11 +3,19 @@
 
 #include "../polynomial/polynomial.h"
 
-class RealPolynomial : Polynomial {
+#include "istream"
+#include "ostream"
+
+class RealPolynomial {
 private:
     unsigned int _degree;
     double* _coefficient;
     double _lambda;
+
+    void setLambda(double);
+    double getLambda() const;
+
+    void refactorDegree();
 
 public:
     RealPolynomial() {
@@ -34,16 +42,19 @@ public:
         this->setLambda(1.0);
     }
 
-    void printPolynomial() override;
+    RealPolynomial(const RealPolynomial& polynom) {
+        this->setCoefficients(polynom.getDegree(), polynom.getCoefficients());
+    }
+
+    ~RealPolynomial() {
+        delete [] _coefficient;
+    }
 
     void setDegree(unsigned int);
-    void setCoefficients();
     void setCoefficients(unsigned int, double*);
     void setCoefficientByIndex(unsigned int, double);
-    void setLambda(double);
 
     unsigned int getDegree() const;
-    double getLambda() const;
 
     double* getCoefficients() const;
     double getCoefficientByIndex(unsigned int) const;
@@ -55,34 +66,16 @@ public:
     void operator -= (const RealPolynomial&);
     void operator *= (const RealPolynomial&);
     void operator *= (const double&);
+    void operator  = (const RealPolynomial&);
+
+    friend RealPolynomial operator + (const RealPolynomial&, const RealPolynomial&);
+    friend RealPolynomial operator - (const RealPolynomial&, const RealPolynomial&);
+    friend RealPolynomial operator * (const RealPolynomial&, const RealPolynomial&);
+    friend RealPolynomial operator * (const RealPolynomial&, const double&);
+    friend RealPolynomial operator * (const double&, const RealPolynomial&);
+
+    friend std::istream& operator >> (std::istream&, RealPolynomial&);
+    friend std::ostream& operator << (std::ostream&, const RealPolynomial&);
 };
-
-RealPolynomial operator + (const RealPolynomial& first, const RealPolynomial& second) {
-    unsigned int degree = (first.getDegree() > second.getDegree()) ? first.getDegree() : second.getDegree();
-    RealPolynomial temp(degree);
-    for (unsigned int index = 0U; index <= temp.getDegree(); index++) {
-        temp.setCoefficientByIndex(index, first.getCoefficientByIndex(index) + second.getCoefficientByIndex(index));
-    }
-    return temp;
-}
-
-RealPolynomial operator - (const RealPolynomial& first, const RealPolynomial& second) {
-    unsigned int degree = (first.getDegree() > second.getDegree()) ? first.getDegree() : second.getDegree();
-    RealPolynomial temp(degree);
-    for (unsigned int index = 0U; index <= degree; index++) {
-        temp.setCoefficientByIndex(index, first.getCoefficientByIndex(index) - second.getCoefficientByIndex(index));
-    }
-    return temp;
-}
-
-RealPolynomial operator * (const RealPolynomial& first, const RealPolynomial& second) {
-    RealPolynomial temp(first.getDegree() + second.getDegree());
-    for (unsigned int index = 0U; index <= temp.getDegree(); index++) {
-        for (unsigned int i = 0U; i <= index; i++) {
-            temp.setCoefficientByIndex(index, temp.getCoefficientByIndex(index) + first.getCoefficientByIndex(i) * second.getCoefficientByIndex(index - i));
-        }
-    }
-    return temp;
-}
 
 #endif
