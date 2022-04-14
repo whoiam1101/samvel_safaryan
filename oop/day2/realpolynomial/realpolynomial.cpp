@@ -191,9 +191,3 @@ std::ostream& operator << (std::ostream& out, const RealPolynomial& polynom) {
     out << polynom.getCoefficientByIndex(0U) << std::endl;
     return out;
 }
-
-int main() {
-    RealPolynomial a;
-    std::cin >> a;
-    return 0;
-}
