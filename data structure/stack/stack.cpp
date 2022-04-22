@@ -13,6 +13,7 @@ void Stack<T>::push(T value) {
 // pop back last element
 template<class T>
 void Stack<T>::pop() {
+    assert(("Stack is empty!", !isEmpty()));
     top = top->next;
 }
 
