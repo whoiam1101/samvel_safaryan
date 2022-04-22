@@ -44,8 +44,13 @@ Stack<T>::Stack(T value) {
 // destructor
 template<class T>
 Stack<T>::~Stack() {
-    while (_top->_next) {
-        delete _top;
-        _top = _top->_next;
+    Node* current_node = _top;
+    Node* next = nullptr;
+    while (current_node) {
+        next = current_node->_next;
+        delete current_node;
+        current_node = next;
     }
+    delete current_node;
+    delete next;
 }

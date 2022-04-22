@@ -8,7 +8,7 @@ private:
         T _value;
         Node* _next;
 
-        Node() : next(nullptr) {}
+        Node() : _next(nullptr) {}
         Node(T value) : _value(value), _next(nullptr) {}
     }* _top;
 
