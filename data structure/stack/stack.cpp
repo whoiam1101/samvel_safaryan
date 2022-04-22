@@ -5,47 +5,47 @@
 // push back new element
 template<class T>
 void Stack<T>::push(T value) {
-    Node* new_top = new Node(value);
-    new_top->next = top;
-    top = new_top;
+    Node* top = new Node(value);
+    top->_next = _top;
+    _top = top;
 }
 
 // pop back last element
 template<class T>
 void Stack<T>::pop() {
     assert(("Stack is empty!", !isEmpty()));
-    top = top->next;
+    _top = _top->_next;
 }
 
-// peek top element
+// peek _top element
 template<class T>
 T Stack<T>::peek() const {
     assert(("Stack is empty!", !isEmpty()));
-    return top->_value;
+    return _top->_value;
 }
 
 // is empty
 template<class T>
 bool Stack<T>::isEmpty() const {
-    return top == nullptr;
+    return _top == nullptr;
 }
 
 // constructors
 template<class T>
 Stack<T>::Stack() {
-    top = nullptr;
+    _top = nullptr;
 }
 
 template<class T>
 Stack<T>::Stack(T value) {
-    top = new Node(value);
+    _top = new Node(value);
 }
 
 // destructor
 template<class T>
 Stack<T>::~Stack() {
-    while (top->next) {
-        delete top;
-        top = top->next;
+    while (_top->_next) {
+        delete _top;
+        _top = _top->_next;
     }
 }

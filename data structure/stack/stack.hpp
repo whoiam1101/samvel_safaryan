@@ -6,11 +6,11 @@ class Stack {
 private:
     struct Node {
         T _value;
-        Node* next;
+        Node* _next;
 
         Node() : next(nullptr) {}
-        Node(T value) : _value(value), next(nullptr) {}
-    }* top;
+        Node(T value) : _value(value), _next(nullptr) {}
+    }* _top;
 
 public:
     // constructors
