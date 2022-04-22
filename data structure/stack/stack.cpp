@@ -51,7 +51,5 @@ Stack<T>::~Stack() {
         delete current_node;
         current_node = next;
     }
-    delete current_node;
-    delete next;
     _top = nullptr;
 }
