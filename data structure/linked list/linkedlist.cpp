@@ -46,7 +46,10 @@ void LinkedList<T>::addAtIndex(int index, T value) {
         node->_prev = temporary_node;
         temporary_node->_next = node;
     } else {
-        _first = new Node(value);
+        Node* node = new Node(value);
+        node->_next = _first;
+        if (_first) _first->_prev = node;
+        _first = node;
     }
 }
 
