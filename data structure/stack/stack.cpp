@@ -1,5 +1,7 @@
 #include "stack.hpp"
 
+#include <cassert>
+
 // push back new element
 template<class T>
 void Stack<T>::push(T value) {
@@ -17,6 +19,7 @@ void Stack<T>::pop() {
 // peek top element
 template<class T>
 T Stack<T>::peek() const {
+    assert(("Stack is empty!", !isEmpty()));
     return top->_value;
 }
 
