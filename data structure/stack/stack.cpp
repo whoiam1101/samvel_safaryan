@@ -29,27 +29,3 @@ template<class T>
 bool Stack<T>::isEmpty() const {
     return _top == nullptr;
 }
-
-// constructors
-template<class T>
-Stack<T>::Stack() {
-    _top = nullptr;
-}
-
-template<class T>
-Stack<T>::Stack(T value) {
-    _top = new Node(value);
-}
-
-// destructor
-template<class T>
-Stack<T>::~Stack() {
-    Node* current_node = _top;
-    Node* next = nullptr;
-    while (current_node) {
-        next = current_node->_next;
-        delete current_node;
-        current_node = next;
-    }
-    _top = nullptr;
-}

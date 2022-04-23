@@ -14,11 +14,25 @@ private:
 
 public:
     // constructors
-    Stack();
-    Stack(T value);
+    Stack() {
+        _top = nullptr;
+    }
+
+    Stack(T value) {
+        _top = new Node(value);
+    }
 
     // destructor
-    ~Stack();
+    ~Stack() {
+        Node* current_node = _top;
+        Node* next = nullptr;
+        while (current_node) {
+            next = current_node->_next;
+            delete current_node;
+            current_node = next;
+        }
+        _top = nullptr;
+    }
 
     // push back new element
     void push(T);
