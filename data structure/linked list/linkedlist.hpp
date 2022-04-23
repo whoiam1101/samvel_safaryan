@@ -1,18 +1,22 @@
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
 
+#include <ostream>
+
+template<typename T>
+struct Node {
+    T _value;
+    Node* _prev;
+    Node* _next;
+
+    Node() : _prev(nullptr), _next(nullptr) {}
+    Node(T value) : _value(value), _prev(nullptr), _next(nullptr) {}
+};
+
 template<class T>
 class LinkedList {
 private:
-    struct Node {
-        T _value;
-        Node* _prev;
-        Node* _next;
-
-        Node() : _prev(nullptr), _next(nullptr) {}
-        Node(T value) : _value(value), _prev(nullptr), _next(nullptr) {}
-    }* _first, _last;
-
+    Node<T>* _first, _last;
     int _size;
 
 public:
@@ -37,6 +41,9 @@ public:
 
     // is empty
     bool isEmpty() const;
+
+    // print all elements in list
+    friend std::ostream& operator << (std::ostream&, const LinkedList<T>&);
 };
 
 #endif

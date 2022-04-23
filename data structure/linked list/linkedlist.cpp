@@ -6,7 +6,7 @@
 template<class T>
 T LinkedList<T>::operator [](int index) {
     assert(("Index out of bounds exception!", 0 <= index && index < size()));
-    Node* temporary_node = _first;
+    Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
     }
@@ -17,12 +17,12 @@ T LinkedList<T>::operator [](int index) {
 template<class T>
 void LinkedList<T>::removeByIndex(int index) {
     assert(("Index out of bounds exception!", 0 <= index && index < size()));
-    Node* temporary_node = _first;
+    Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
     }
-    Node* prev = temporary_node->_prev;
-    Node* next = temporary_node->_next;
+    Node<T>* prev = temporary_node->_prev;
+    Node<T>* next = temporary_node->_next;
     if (prev) prev->_next = next;
     if (next) next->_prev = prev;
     delete temporary_node;
@@ -38,19 +38,19 @@ template<class T>
 void LinkedList<T>::addAtIndex(int index, T value) {
     assert(("Index out of bounds exception!", 0 <= index && index <= size()));
     if (index < size()) {
-        Node* temporary_node = _first;
+        Node<T>* temporary_node = _first;
         index--;
         while (index--) {
             temporary_node = temporary_node->_next;
         }
-        Node* prev = temporary_node->_prev;
-        Node* node = new Node(value);
+        Node<T>* prev = temporary_node->_prev;
+        Node<T>* node = new Node(value);
         if (prev) prev->_next = node;
         node->_prev = prev;
         node->_next = temporary_node;
         temporary_node->_prev = node;
     } else {
-        Node* node = new Node(value);
+        Node<T>* node = new Node(value);
         _last->_next = node;
         node->_prev  = _last;
         _last = node;
@@ -68,6 +68,17 @@ int LinkedList<T>::size() const {
 template<class T>
 bool LinkedList<T>::isEmpty() const {
     return _size == 0;
+}
+
+// print all elements in list
+template<class T>
+std::ostream& operator << (std::ostream& out, const LinkedList<T>& list) {
+    Node<T>* temporary_node = list._first;
+    while (temporary_node) {
+        out << temporary_node->_value << " ";
+        temporary_node = temporary_node->_next;
+    }
+    return out;
 }
 
 // constructors
@@ -88,8 +99,8 @@ LinkedList<T>::LinkedList(T value) {
 // destructor
 template<class T>
 LinkedList<T>::~LinkedList() {
-    Node* current_node = _first;
-    Node* next = nullptr;
+    Node<T>* current_node = _first;
+    Node<T>* next = nullptr;
     while (current_node) {
         next = current_node->_next;
         delete current_node;
