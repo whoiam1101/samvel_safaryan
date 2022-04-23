@@ -6,23 +6,24 @@
 template<typename T>
 struct Node {
     T _value;
-    Node* _prev;
-    Node* _next;
+    Node<T>* _prev;
+    Node<T>* _next;
 
-    Node() : _prev(nullptr), _next(nullptr) {}
-    Node(T value) : _value(value), _prev(nullptr), _next(nullptr) {}
+    Node() : _prev(NULL), _next(NULL) {}
+    Node(T value) : _value(value), _prev(NULL), _next(NULL) {}
 };
 
-template<class T>
+template<typename T>
 class LinkedList {
 private:
-    Node<T>* _first, _last;
+    Node<T>* _first;
+    Node<T>* _last;
     int _size;
 
 public:
     // constructors
     LinkedList();
-    LinkedList(T value);
+    LinkedList(T);
 
     // destructor
     ~LinkedList();
@@ -43,7 +44,8 @@ public:
     bool isEmpty() const;
 
     // print all elements in list
-    friend std::ostream& operator << (std::ostream&, const LinkedList<T>&);
+    template<class TT>
+    friend std::ostream& operator << (std::ostream&, const LinkedList<TT>&);
 };
 
 #endif
