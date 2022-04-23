@@ -13,6 +13,8 @@ private:
         Node(T value) : _value(value), _prev(nullptr), _next(nullptr) {}
     }* _first, _last;
 
+    int _size;
+
 public:
     // constructors
     LinkedList();

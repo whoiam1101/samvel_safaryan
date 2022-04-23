@@ -5,81 +5,84 @@
 // get value at index
 template<class T>
 T LinkedList<T>::operator [](int index) {
+    assert(("Index out of bounds exception!", 0 <= index && index < size()));
     Node* temporary_node = _first;
-    while (temporary_node && index--) {
+    while (index--) {
         temporary_node = temporary_node->_next;
     }
-    assert(("Index out of bounds exception!", temporary_node));
     return temporary_node->_value;
 }
 
 // remove by index
 template<class T>
 void LinkedList<T>::removeByIndex(int index) {
+    assert(("Index out of bounds exception!", 0 <= index && index < size()));
     Node* temporary_node = _first;
-    while (temporary_node && index--) {
+    while (index--) {
         temporary_node = temporary_node->_next;
     }
-    assert(("Index out of bounds exception!", temporary_node));
     Node* prev = temporary_node->_prev;
     Node* next = temporary_node->_next;
     if (prev) prev->_next = next;
     if (next) next->_prev = prev;
     delete temporary_node;
-    if (!prev && !next) _first = nullptr;
+    _size--;
+    if (!prev && !next) {
+        _first = nullptr;
+        _last  = nullptr;
+    }
 }
 
 // add at index
 template<class T>
 void LinkedList<T>::addAtIndex(int index, T value) {
-    if (index > 0) {
+    assert(("Index out of bounds exception!", 0 <= index && index <= size()));
+    if (index < size()) {
         Node* temporary_node = _first;
         index--;
-        while (temporary_node && index--) {
+        while (index--) {
             temporary_node = temporary_node->_next;
         }
-        assert(("Index out of bounds exception!", temporary_node));
-        Node* next = temporary_node->_next;
+        Node* prev = temporary_node->_prev;
         Node* node = new Node(value);
-        if (next) next->_prev = node;
-        node->_next = next;
-        node->_prev = temporary_node;
-        temporary_node->_next = node;
+        if (prev) prev->_next = node;
+        node->_prev = prev;
+        node->_next = temporary_node;
+        temporary_node->_prev = node;
     } else {
         Node* node = new Node(value);
-        node->_next = _first;
-        if (_first) _first->_prev = node;
-        _first = node;
+        _last->_next = node;
+        node->_prev  = _last;
+        _last = node;
     }
+    _size++;
 }
 
 // count of nodes
 template<class T>
 int LinkedList<T>::size() const {
-    int size = 0;
-    Node* temporary_node = _first;
-    while (temporary_node) {
-        size++;
-        temporary_node = temporary_node->_next;
-    }
-    return size;
+    return _size;
 }
 
 // is empty
 template<class T>
 bool LinkedList<T>::isEmpty() const {
-    return _first == nullptr;
+    return _size == 0;
 }
 
 // constructors
 template<class T>
 LinkedList<T>::LinkedList() {
     _first = nullptr;
+    _last  = nullptr;
+    _size = 0;
 }
 
 template<class T>
 LinkedList<T>::LinkedList(T value) {
     _first = new Node(value);
+    _last  = _first;
+    _size = 1;
 }
 
 // destructor
@@ -93,4 +96,6 @@ LinkedList<T>::~LinkedList() {
         current_node = next;
     }
     _first = nullptr;
+    _last  = nullptr;
+    _size = 0;
 }
