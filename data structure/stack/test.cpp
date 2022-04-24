@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#include "stack.cpp"
+#include "stack.hpp"
 
 using namespace std;
 
