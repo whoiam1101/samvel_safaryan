@@ -33,7 +33,7 @@ int main() {
         } else {
             cout << RED << "REJECTED : Test id = " << i + 1 << "\n";
         }
-        stack.pop();
+        int temp = stack.pop();
         true_stack.pop_back();
     }
 

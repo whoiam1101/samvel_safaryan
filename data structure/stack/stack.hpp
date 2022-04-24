@@ -1,7 +1,7 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
-template<class T>
+template<typename T>
 class Stack {
 private:
     struct Node {
@@ -14,25 +14,11 @@ private:
 
 public:
     // constructors
-    Stack() {
-        _top = nullptr;
-    }
-
-    Stack(T value) {
-        _top = new Node(value);
-    }
+    Stack();
+    Stack(T);
 
     // destructor
-    ~Stack() {
-        Node* current_node = _top;
-        Node* next = nullptr;
-        while (current_node) {
-            next = current_node->_next;
-            delete current_node;
-            current_node = next;
-        }
-        _top = nullptr;
-    }
+    ~Stack();
 
     // push back new element
     void push(T);
@@ -48,7 +34,7 @@ public:
 };
 
 // push back new element
-template<class T>
+template<typename T>
 void Stack<T>::push(T value) {
     Node* top = new Node(value);
     top->_next = _top;
@@ -56,7 +42,7 @@ void Stack<T>::push(T value) {
 }
 
 // pop back last element
-template<class T>
+template<typename T>
 T Stack<T>::pop() {
     T return_value = _top->_value;
     Node* temporary_node = _top;
@@ -66,15 +52,39 @@ T Stack<T>::pop() {
 }
 
 // peek _top element
-template<class T>
+template<typename T>
 T Stack<T>::peek() const {
     return _top->_value;
 }
 
 // is empty
-template<class T>
+template<typename T>
 bool Stack<T>::isEmpty() const {
     return _top == nullptr;
+}
+
+// constructors
+template<typename T>
+Stack<T>::Stack() {
+    _top = nullptr;
+}
+
+template<typename T>
+Stack<T>::Stack(T value) {
+    _top = new Node(value);
+}
+
+// destructor
+template<typename T>
+Stack<T>::~Stack() {
+    Node* current_node = _top;
+    Node* next = nullptr;
+    while (current_node) {
+        next = current_node->_next;
+        delete current_node;
+        current_node = next;
+    }
+    _top = nullptr;
 }
 
 #endif
