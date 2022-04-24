@@ -1,5 +1,5 @@
-all: stack.cpp test.cpp
-	g++ -Wall -Wextra stack.cpp test.cpp -o test
+all: test.cpp
+	g++ -Wall -Wextra test.cpp -o test
 
 run: test
 	./test
