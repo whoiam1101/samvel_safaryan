@@ -3,7 +3,7 @@
 #include <ctime>
 #include <random>
 
-#include "linkedlist.cpp"
+#include "linkedlist.hpp"
 
 using namespace std;
 
