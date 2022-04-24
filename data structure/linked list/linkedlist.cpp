@@ -1,11 +1,8 @@
 #include "linkedlist.hpp"
 
-#include <cassert>
-
 // get value at index
 template<typename T>
 T LinkedList<T>::operator [](int index) {
-    assert(("Index out of bounds exception!", 0 <= index && index < size()));
     Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
@@ -16,15 +13,18 @@ T LinkedList<T>::operator [](int index) {
 // remove by index
 template<typename T>
 void LinkedList<T>::removeByIndex(int index) {
-    assert(("Index out of bounds exception!", 0 <= index && index < size()));
     Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
     }
     Node<T>* prev = temporary_node->_prev;
     Node<T>* next = temporary_node->_next;
-    if (prev) prev->_next = next;
-    if (next) next->_prev = prev;
+    if (prev) {
+        prev->_next = next;
+    }
+    if (next) {
+        next->_prev = prev;
+    }
     delete temporary_node;
     _size--;
     if (!prev && !next) {
@@ -36,7 +36,6 @@ void LinkedList<T>::removeByIndex(int index) {
 // add at index
 template<typename T>
 void LinkedList<T>::addAtIndex(int index, T value) {
-    assert(("Index out of bounds exception!", 0 <= index && index <= size()));
     Node<T>* node = new Node<T>(value);
     if (index < size()) {
         Node<T>* temporary_node = _first;
@@ -45,7 +44,9 @@ void LinkedList<T>::addAtIndex(int index, T value) {
             temporary_node = temporary_node->_next;
         }
         Node<T>* prev = temporary_node->_prev;
-        if (prev) prev->_next = node;
+        if (prev) {
+            prev->_next = node;
+        }
         node->_prev = prev;
         node->_next = temporary_node;
         temporary_node->_prev = node;
