@@ -7,6 +7,7 @@ template<typename T>
 class Queue {
 private:
     LinkedList<T> _queue_container;
+
 public:
     // contructor
     Queue() = default;
