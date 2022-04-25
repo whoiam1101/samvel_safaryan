@@ -76,6 +76,8 @@ void LinkedList<T>::removeByIndex(int index) {
     delete temporary_node;
     _size--;
     if (!prev && !next) {
+        delete _first;
+        delete _last;
         _first = NULL;
         _last  = NULL;
     }
