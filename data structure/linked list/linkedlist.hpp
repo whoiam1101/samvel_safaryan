@@ -11,7 +11,7 @@ struct Node {
     Node<T>* _next;
 
     Node() : _prev(NULL), _next(NULL) {}
-    Node(T value) : _value(value), _prev(NULL), _next(NULL) {}
+    Node(const T& value) : _value(value), _prev(NULL), _next(NULL) {}
 };
 
 template<typename T>
@@ -24,7 +24,7 @@ private:
 public:
     // constructors
     LinkedList();
-    LinkedList(T);
+    LinkedList(const T&);
 
     // destructor
     ~LinkedList();
@@ -36,7 +36,7 @@ public:
     void removeByIndex(int);
 
     // add at index
-    void addAtIndex(int, T);
+    void addAtIndex(int, const T&);
 
     // count of nodes
     int size() const;
@@ -92,7 +92,7 @@ void LinkedList<T>::removeByIndex(int index) {
 
 // add at index
 template<typename T>
-void LinkedList<T>::addAtIndex(int index, T value) {
+void LinkedList<T>::addAtIndex(int index, const T& value) {
     if (index < 0 || size() < index) {
         throw std::invalid_argument("Out of bounds exception");
     }
@@ -155,7 +155,7 @@ LinkedList<T>::LinkedList() {
 }
 
 template<typename T>
-LinkedList<T>::LinkedList(T value) {
+LinkedList<T>::LinkedList(const T& value) {
     _first = new Node<T>(value);
     _last = _first;
     _size = 1;
