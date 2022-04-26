@@ -19,7 +19,7 @@ public:
     T popFront();
 
     // push back
-    void pushBack(T);
+    void pushBack(const T&);
 
     // return front and back element
     T front() const;
@@ -45,7 +45,7 @@ T Queue<T>::popFront() {
 }
 
 template<typename T>
-void Queue<T>::pushBack(T value) {
+void Queue<T>::pushBack(const T& value) {
     _queue_container.addAtIndex(_queue_container.size(), value);
 }
 
