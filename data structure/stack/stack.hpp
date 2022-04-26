@@ -1,6 +1,8 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
+#include <stdexcept>
+
 template<typename T>
 class Stack {
 private:
@@ -44,6 +46,9 @@ void Stack<T>::push(T value) {
 // pop back last element
 template<typename T>
 T Stack<T>::pop() {
+    if (isEmpty()) {
+        throw std::invalid_argument("Stack is empty!");
+    }
     T return_value = _top->_value;
     Node* temporary_node = _top;
     _top = _top->_next;
@@ -54,6 +59,9 @@ T Stack<T>::pop() {
 // peek _top element
 template<typename T>
 T Stack<T>::peek() const {
+    if (isEmpty()) {
+        throw std::invalid_argument("Stack is empty!");
+    }
     return _top->_value;
 }
 
