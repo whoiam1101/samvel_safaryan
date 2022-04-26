@@ -2,6 +2,7 @@
 #define LINKEDLIST_HPP
 
 #include <ostream>
+#include <stdexcept>
 
 template<typename T>
 struct Node {
@@ -51,6 +52,9 @@ public:
 // get value at index
 template<typename T>
 T LinkedList<T>::operator [](int index) {
+    if (index < 0 || size() <= index) {
+        throw std::invalid_argument("Out of bounds exception");
+    }
     Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
@@ -61,6 +65,9 @@ T LinkedList<T>::operator [](int index) {
 // remove by index
 template<typename T>
 void LinkedList<T>::removeByIndex(int index) {
+    if (index < 0 || size() <= index) {
+        throw std::invalid_argument("Out of bounds exception");
+    }
     Node<T>* temporary_node = _first;
     while (index--) {
         temporary_node = temporary_node->_next;
@@ -86,6 +93,9 @@ void LinkedList<T>::removeByIndex(int index) {
 // add at index
 template<typename T>
 void LinkedList<T>::addAtIndex(int index, T value) {
+    if (index < 0 || size() < index) {
+        throw std::invalid_argument("Out of bounds exception");
+    }
     Node<T>* node = new Node<T>(value);
     if (index < size()) {
         Node<T>* temporary_node = _first;
