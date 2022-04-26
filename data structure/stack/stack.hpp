@@ -11,19 +11,19 @@ private:
         Node* _next;
 
         Node() : _next(nullptr) {}
-        Node(T value) : _value(value), _next(nullptr) {}
+        Node(const T& value) : _value(value), _next(nullptr) {}
     }* _top;
 
 public:
     // constructors
     Stack();
-    Stack(T);
+    Stack(const T&);
 
     // destructor
     ~Stack();
 
     // push back new element
-    void push(T);
+    void push(const T&);
 
     // pop back last element
     T pop();
@@ -37,7 +37,7 @@ public:
 
 // push back new element
 template<typename T>
-void Stack<T>::push(T value) {
+void Stack<T>::push(const T& value) {
     Node* top = new Node(value);
     top->_next = _top;
     _top = top;
@@ -78,7 +78,7 @@ Stack<T>::Stack() {
 }
 
 template<typename T>
-Stack<T>::Stack(T value) {
+Stack<T>::Stack(const T& value) {
     _top = new Node(value);
 }
 
