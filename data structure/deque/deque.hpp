@@ -16,8 +16,8 @@ public:
     ~Deque();
 
     // push front and push back
-    void pushFront(T);
-    void pushBack(T);
+    void pushFront(const T&);
+    void pushBack(const T&);
 
     // pop front and pop back
     T popFront();
@@ -40,12 +40,12 @@ Deque<T>::~Deque() {
 }
 
 template<typename T>
-void Deque<T>::pushFront(T value) {
+void Deque<T>::pushFront(const T& value) {
     _deque_container.addAtIndex(0, value);
 }
 
 template<typename T>
-void Deque<T>::pushBack(T value) {
+void Deque<T>::pushBack(const T& value) {
     _deque_container.addAtIndex(_deque_container.size(), value);
 }
 
