@@ -14,4 +14,5 @@ void _selectionSort(int* array, int left, int right) {
 void _selectionSort(int* array, int size) {
     _selectionSort(array, 0, size - 1);
 }
+
 #endif // __SELECTION_SORT_H__
