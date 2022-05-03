@@ -2,7 +2,7 @@
 
 int main() {
     Tree* tree = new Tree();
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 26; i++) {
         tree->insert(i);
     }
     tree->bfs();
