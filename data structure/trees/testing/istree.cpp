@@ -31,12 +31,12 @@ int main() {
             cin >> graph[i][j];
         }
     }
-    if (isTree(graph, number_of_vertices)) {
+    if (number_of_vertices == 0 || isTree(graph, number_of_vertices)) {
         cout << " Graph is a tree!\n";
         cout << " The root is " << root(graph, number_of_vertices) << endl;
-        if (isBinaryTree(graph, number_of_vertices)) {
+        if (number_of_vertices == 0 || isBinaryTree(graph, number_of_vertices)) {
             cout << "   Graph is a binary tree!\n";
-            if (isBinarySearchTree(graph, number_of_vertices)) {
+            if (number_of_vertices == 0 || isBinarySearchTree(graph, number_of_vertices)) {
                 cout << "     Graph is a binary search tree!\n";
             } else {
                 cout << "     Graph isn't a binary search tree!\n";
