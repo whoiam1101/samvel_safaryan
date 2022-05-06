@@ -58,7 +58,7 @@ int _genInteger(int a = -20, int b = 20) {
 
 int main() {
     Node* root = new Node(_genInteger());
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 16; i++) {
         insert(root, _genInteger(0, 9));
     }
     vector<vector<string>> tree;
@@ -68,7 +68,7 @@ int main() {
         printSpace((1 << (height - i)) - 1);
         for (int j = 0; j < (int) tree[i].size(); j++) {
             cout << tree[i][j];
-            printSpace((1 << (height - i)) - (height - i - 1));
+            printSpace((1 << (height - i + 1)) - 1);
         }
         cout << endl;
     }
