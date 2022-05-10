@@ -4,7 +4,9 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <stdexcept>
 
+using std::invalid_argument;
 using std::vector;
 using std::queue;
 using std::cin;
@@ -15,6 +17,8 @@ class OrientedGraph {
 private:
     vector<vector<int>> _adjacency_list;
     int _number_of_edges;
+
+    void outOfBoundException(int) const;
 
 public:
     // constructors
@@ -48,6 +52,12 @@ public:
     void printAdjacencyList() const;
 };
 
+void OrientedGraph::outOfBoundException(int u) const {
+    if (u < 0 || numberOfVertices() <= u) {
+        throw invalid_argument("Out of bound exception!");
+    }
+}
+
 // constructors
 OrientedGraph::OrientedGraph() {
     _number_of_edges = 0;
@@ -73,6 +83,7 @@ int OrientedGraph::numberOfEdges() const {
 }
 
 int OrientedGraph::numberOfIncomingEdges(int u) const {
+    outOfBoundException(u);
     int degree = 0;
     for (int i = 0; i < numberOfVertices(); i++) {
         for (int j = 0; j < (int) _adjacency_list[i].size(); j++) {
@@ -86,6 +97,7 @@ int OrientedGraph::numberOfIncomingEdges(int u) const {
 }
 
 int OrientedGraph::numberOfOutgoingEdges(int u) const {
+    outOfBoundException(u);
     return _adjacency_list[u].size();
 }
 
@@ -94,6 +106,8 @@ int OrientedGraph::getDegree(int u) const {
 }
 
 bool OrientedGraph::isThereAnOrientedEdge(int u, int v) const {
+    outOfBoundException(u);
+    outOfBoundException(v);
     for (int i = 0; i < numberOfOutgoingEdges(u); i++) {
         if (_adjacency_list[u][i] == v) {
             return true;
@@ -107,6 +121,8 @@ bool OrientedGraph::isThereAnEdge(int u, int v) const {
 }
 
 bool OrientedGraph::isConnected(int u, int v) const {
+    outOfBoundException(u);
+    outOfBoundException(v);
     if (u != v) {
         bool* is_visited = new bool[numberOfVertices()];
         for (int i = 0; i < numberOfVertices(); i++) {
@@ -135,6 +151,7 @@ bool OrientedGraph::isConnected(int u, int v) const {
 }
 
 vector<int> OrientedGraph::verticesWithWhichItIsConnected(int u) const {
+    outOfBoundException(u);
     bool* is_visited = new bool[numberOfVertices()];
     for (int i = 0; i < numberOfVertices(); i++) {
         is_visited[i] = false;
@@ -162,6 +179,8 @@ vector<int> OrientedGraph::verticesWithWhichItIsConnected(int u) const {
 }
 
 int OrientedGraph::distance(int u, int v) const {
+    outOfBoundException(u);
+    outOfBoundException(v);
     if (u != v) {
         bool* is_visited = new bool[numberOfVertices()];
         int* distance_to_vertex = new int[numberOfVertices()];
@@ -196,6 +215,7 @@ void OrientedGraph::addVertex() {
 }
 
 void OrientedGraph::removeVertex(int u) {
+    outOfBoundException(u);
     _number_of_edges -= getDegree(u);
     _adjacency_list.erase(_adjacency_list.begin() + u);
     for (int i = 0; i < numberOfVertices(); i++) {
