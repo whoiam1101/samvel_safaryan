@@ -11,12 +11,16 @@ int _genInteger(int a = 0, int b = 13) {
 }
 
 int main() {
-    OrientedGraph graph(7);
+    OrientedGraph graph(4);
     for (int i = 0; i < 13; i++) {
         graph.addOrientedEdge(_genInteger(0, graph.numberOfVertices() - 1),
-                              _genInteger(0, graph.numberOfVertices() - 1));
+                              _genInteger(0, graph.numberOfVertices() - 1), _genInteger(1, 12));
     }
     graph.printAdjacencyMatrix();
+    int* distances = graph.minimalDistanceFromToAll(0);
+    for (int i = 0; i < graph.numberOfVertices(); i++) {
+        cout << "distance from " << 0 << " to " << i << " equal to " << distances[i] << endl;
+    }
     cout << endl;
     for (int i = 0; i < graph.numberOfVertices(); i++) {
         cout << i << " --->";
@@ -39,7 +43,7 @@ int main() {
         }
     }
     cout << endl;
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 2; i++) {
         graph.removeVertex(_genInteger(0, graph.numberOfVertices() - 1));
         graph.printAdjacencyMatrix();
     }
