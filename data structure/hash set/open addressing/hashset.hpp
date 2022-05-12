@@ -55,13 +55,14 @@ void HashSet::insert(char* key, int value) {
     int first_hash_value = firstHash(key);
     int second_hash_value = secondHash(key);
     for (int i = 0; i < (int) _table.size(); i++) {
-        if (
-            _table[first_hash_value]._key == nullptr ||
-            _table[first_hash_value]._key == key
-        ) {
+        if (_table[first_hash_value]._key == nullptr) {
             _table[first_hash_value]._key = key;
             _table[first_hash_value]._value = value;
             _size++;
+            return;
+        }
+        if (_table[first_hash_value]._key == key) {
+            _table[first_hash_value]._value = value;
             return;
         }
         first_hash_value = (first_hash_value + second_hash_value) % (int) _table.size();
