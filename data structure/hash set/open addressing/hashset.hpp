@@ -77,6 +77,7 @@ void HashSet::remove(char* key) {
         if (_table[first_hash_value]._key == key) {
             _table[first_hash_value]._key = nullptr;
             _table[first_hash_value]._value = 0;
+            _size--;
             return;
         }
         first_hash_value = (first_hash_value + second_hash_value) % (int) _table.size();
