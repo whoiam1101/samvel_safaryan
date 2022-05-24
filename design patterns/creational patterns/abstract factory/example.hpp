@@ -111,7 +111,7 @@ public:
   CoffeeTable* createCoffeeTable() const override { return new ModernCoffeeTable(); }
 };
 
-void ClientCode(const AbstractFurniture& abstract_furniture) {
+void clientCode(const AbstractFurniture& abstract_furniture) {
   const Chair*       chair        = abstract_furniture.createChair();
   const Sofa*        sofa         = abstract_furniture.createSofa();
   const CoffeeTable* coffee_table = abstract_furniture.createCoffeeTable();
