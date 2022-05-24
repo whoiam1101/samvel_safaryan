@@ -1,5 +1,5 @@
-#ifndef __ABSTRACT_Furniture_EXAMPLE_H__
-#define __ABSTRACT_Furniture_EXAMPLE_H__
+#ifndef __ABSTRACT_FURNITURE_EXAMPLE_H__
+#define __ABSTRACT_FURNITURE_EXAMPLE_H__
 
 #include <iostream>
 
@@ -125,4 +125,4 @@ void ClientCode(const AbstractFurniture& abstract_furniture) {
   delete coffee_table;
 }
 
-#endif // __ABSTRACT_Furniture_EXAMPLE_H__
+#endif // __ABSTRACT_FURNITURE_EXAMPLE_H__
