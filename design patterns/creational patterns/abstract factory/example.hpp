@@ -1,5 +1,5 @@
-#ifndef __ABSTRACT_FACTORY_EXAMPLE_H__
-#define __ABSTRACT_FACTORY_EXAMPLE_H__
+#ifndef __ABSTRACT_Furniture_EXAMPLE_H__
+#define __ABSTRACT_Furniture_EXAMPLE_H__
 
 #include <iostream>
 
@@ -81,40 +81,40 @@ public:
   unsigned int price() const override { return 200U; }
 };
 
-class AbstractFactory {
+class AbstractFurniture {
 public:
-  virtual ~AbstractFactory() {}
+  virtual ~AbstractFurniture() {}
 
   virtual Chair*       createChair()       const = 0;
   virtual Sofa*        createSofa()        const = 0;
   virtual CoffeeTable* createCoffeeTable() const = 0;
 };
 
-class ArtDecoAbstractFactory : public AbstractFactory {
+class ArtDecoAbstractFurniture : public AbstractFurniture {
 public:
   Chair*       createChair()       const override { return new ArtDecoChair(); }
   Sofa*        createSofa()        const override { return new ArtDecoSofa(); }
   CoffeeTable* createCoffeeTable() const override { return new ArtDecoCoffeeTable(); }
 };
 
-class VictorianAbstractFactory : public AbstractFactory {
+class VictorianAbstractFurniture : public AbstractFurniture {
 public:
   Chair*       createChair()       const override { return new VictorianChair(); }
   Sofa*        createSofa()        const override { return new VictorianSofa(); }
   CoffeeTable* createCoffeeTable() const override { return new VictorianCoffeeTable(); }
 };
 
-class ModernAbstractFactory : public AbstractFactory {
+class ModernAbstractFurniture : public AbstractFurniture {
 public:
   Chair*       createChair()       const override { return new ModernChair(); }
   Sofa*        createSofa()        const override { return new ModernSofa(); }
   CoffeeTable* createCoffeeTable() const override { return new ModernCoffeeTable(); }
 };
 
-void ClientCode(const AbstractFactory& abstract_fatory) {
-  const Chair*       chair        = abstract_fatory.createChair();
-  const Sofa*        sofa         = abstract_fatory.createSofa();
-  const CoffeeTable* coffee_table = abstract_fatory.createCoffeeTable();
+void ClientCode(const AbstractFurniture& abstract_furniture) {
+  const Chair*       chair        = abstract_furniture.createChair();
+  const Sofa*        sofa         = abstract_furniture.createSofa();
+  const CoffeeTable* coffee_table = abstract_furniture.createCoffeeTable();
 
   std::cout << "Chair        price : " << chair->price()        << std::endl;
   std::cout << "Sofa         price : " << sofa->price()         << std::endl;
@@ -125,4 +125,4 @@ void ClientCode(const AbstractFactory& abstract_fatory) {
   delete coffee_table;
 }
 
-#endif // __ABSTRACT_FACTORY_EXAMPLE_H__
+#endif // __ABSTRACT_Furniture_EXAMPLE_H__
