@@ -76,4 +76,8 @@ public:
   Box* createBox() const override { return new BigBox(); }
 };
 
+void clientCode(const BoxCreator& box_creator) {
+  box_creator.toSell();
+}
+
 #endif // __FACTORY_METHOD_EXAMPLE_H__
