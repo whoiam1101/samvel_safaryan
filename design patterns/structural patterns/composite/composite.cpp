@@ -100,5 +100,5 @@ int main() {
 
 	compound_graphic->moveObject(point_t(2.0, 3.0));
 	compound_graphic->drawObject();
-	return 0;
+  return 0;
 }
