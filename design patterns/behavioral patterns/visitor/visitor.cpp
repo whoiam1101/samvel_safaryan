@@ -56,7 +56,7 @@ public:
     switch (_company) {
     case EnumCompanies::FACEBOOK: cout << "I'm in facebook now!\n"; break;
     case EnumCompanies::TELEGRAM: cout << "I'm in telegram now!\n"; break;
-    case EnumCompanies::TWITTER:  cout << "I'm in twitter  now!\n";   break;
+    case EnumCompanies::TWITTER:  cout << "I'm in twitter  now!\n"; break;
     }
   }
 };
