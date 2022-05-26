@@ -45,15 +45,15 @@ public:
 
 class HumanVisitor : public Visitor {
 private:
-  EnumCompanies _messenger;
+  EnumCompanies _company;
 
 public:
-  void visit(Facebook& facebook) override { _messenger = EnumCompanies::FACEBOOK; }
-  void visit(Telegram& telegram) override { _messenger = EnumCompanies::TELEGRAM; }
-  void visit(Twitter&  twitter)  override { _messenger = EnumCompanies::TWITTER; }
+  void visit(Facebook& facebook) override { _company = EnumCompanies::FACEBOOK; }
+  void visit(Telegram& telegram) override { _company = EnumCompanies::TELEGRAM; }
+  void visit(Twitter&  twitter)  override { _company = EnumCompanies::TWITTER; }
 
   void whatCompany() const {
-    switch (_messenger) {
+    switch (_company) {
     case EnumCompanies::FACEBOOK: cout << "I'm in facebook now!\n"; break;
     case EnumCompanies::TELEGRAM: cout << "I'm in telegram now!\n"; break;
     case EnumCompanies::TWITTER:  cout << "I'm in twitter  now!\n";   break;
